@@ -10,16 +10,17 @@
 
             <div class="card">
 
+               {{-- Header --}}
                <div class="card-header d-flex justify-content-between">
 
                   {{-- Project Table Title --}}
-                  <div class="col-9">
+                  <div class="col-9 fw-bold fs-3 text-primary">
 
                      {{ __('Projects') }}
 
                   </div>
 
-                  {{-- Button to Create New Comic --}}
+                  {{-- Button to Create New Project --}}
                   <div class="col-3 d-flex justify-content-end align-items-end">
 
                      <button type="button" class="btn btn-primary">
