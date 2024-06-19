@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ProjectController extends Controller
 {
     /**
@@ -27,15 +28,26 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
-        //
+
+        $projectData = $request->all();
+
+        // dd($projectData);
+        
+        $newProject = new Project();
+        $newProject->fill($projectData);
+        $newProject->slug = Str::slug($newProject->name, '_');
+        $newProject->save();
+
+        return redirect()->route('admin.projects.index');
+
     }
 
     /**
