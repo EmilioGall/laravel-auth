@@ -18,7 +18,7 @@ class ProjectController extends Controller
 
         // dd($projectsArray);
 
-        return view('projects.index', compact('projectsArray'));
+        return view('admin.projects.index', compact('projectsArray'));
     
     }
 
