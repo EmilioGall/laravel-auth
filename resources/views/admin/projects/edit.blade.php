@@ -39,8 +39,9 @@
                {{-- Form Section --}}
                <section class="card-body">
 
-                  <form class="border rounded p-3 my-4" action="{{ route('admin.projects.store') }}" method="POST">
+                  <form class="border rounded p-3 my-4" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
                      @csrf
+                     @method('PUT')
 
                      <div class="row g-3">
 
@@ -77,7 +78,7 @@
                               id="description"
                               name="description"
                               rows="5"
-                              placeholder="Insert here a description...">{{ old('description') }}</textarea>
+                              placeholder="Insert here a description...">{{ old('description', $project->description) }}</textarea>
 
                            @error('description')
                               <div id="title-empty-error" class="invalid-feedback">
@@ -94,7 +95,7 @@
                      {{-- Submit Button --}}
                      <div class="col-4">
 
-                        <button class="w-100 btn btn-primary btn-lg mb-4" type="submit">Create</button>
+                        <button class="w-100 btn btn-primary btn-lg mb-4" type="submit">Update</button>
 
                      </div>
 
