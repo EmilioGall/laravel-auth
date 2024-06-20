@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 class ProjectController extends Controller
 {
     /**
@@ -20,7 +21,6 @@ class ProjectController extends Controller
         // dd($projectsArray);
 
         return view('admin.projects.index', compact('projectsArray'));
-    
     }
 
     /**
@@ -40,30 +40,32 @@ class ProjectController extends Controller
         $projectData = $request->all();
 
         // dd($projectData);
-        
+
         $newProject = new Project();
         $newProject->fill($projectData);
         $newProject->slug = Str::slug($newProject->name, '_');
         $newProject->save();
 
         return redirect()->route('admin.projects.index');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+
+        // dd($project);
+
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
