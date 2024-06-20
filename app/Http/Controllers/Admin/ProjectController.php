@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -71,9 +72,19 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+        $projectData = $request->all();
+
+        // dd($projectData);
+
+        $newProject = new Project();
+        $newProject->fill($projectData);
+        $newProject->slug = Str::slug($newProject->name, '_');
+        $newProject->save();
+
+        return redirect()->route('admin.projects.index', ['project' => $project->slug]);
     }
 
     /**
