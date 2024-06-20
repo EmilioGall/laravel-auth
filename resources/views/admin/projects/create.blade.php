@@ -22,18 +22,16 @@
                   {{-- Button to Projects Table --}}
                   <div class="col-3 d-flex justify-content-end align-items-end">
 
-                     <button type="button"
-                     class="btn btn-outline-primary h-75 w-100 d-flex align-items-center justify-content-center">
-      
-                     <a href="{{ route('admin.projects.index') }}">
-      
+                     <a type="button"
+                        class="btn btn-outline-primary h-75 w-100 d-flex align-items-center justify-content-center"
+                        href="{{ route('admin.projects.index') }}">
+
                         <i class="fa-solid fa-angles-left"></i> Go to Projects Table
-      
+
                      </a>
-      
-                  </button>
 
                   </div>
+                  
                </div>
 
                {{-- Form Section --}}
