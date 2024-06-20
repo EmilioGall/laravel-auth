@@ -23,17 +23,14 @@
                   {{-- Button to Create New Project --}}
                   <div class="col-3 d-flex justify-content-end align-items-end">
 
-                     <button type="button" class="btn btn-primary">
+                     <a type="button" class="btn btn-primary" href="{{ route('admin.projects.create') }}">
 
-                        <a href="{{ route('admin.projects.create') }}">
+                        <i class="fa-solid fa-plus me-1"></i> Add New Project
 
-                           <i class="fa-solid fa-plus me-1"></i> Add New Project
-
-                        </a>
-
-                     </button>
+                     </a>
 
                   </div>
+
                </div>
 
                <div class="card-body">
@@ -55,32 +52,28 @@
 
                         @foreach ($projectsArray as $project)
                            <tr>
-                              <th scope="row">{{ $project['slug'] }}</th>
+                              <th scope="row">
+                                 <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">{{ $project['slug'] }}</a>
+                              </th>
                               <td>{{ $project['name'] }}</td>
                               <td>{{ substr($project['description'], 0, 20) }}...</td>
                               <td>
 
                                  {{-- Modify Button --}}
-                                 <button type="button" class="btn btn-outline-primary">
+                                 <a type="button" class="btn btn-outline-primary"
+                                    href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">
 
-                                    <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">
+                                    <i class="fa-regular fa-pen-to-square"></i>
 
-                                       <i class="fa-regular fa-pen-to-square"></i>
-
-                                    </a>
-
-                                 </button>
+                                 </a>
 
                                  {{-- Delete Button --}}
-                                 <button type="button" class="btn btn-outline-danger">
+                                 <a type="button" class="btn btn-outline-danger"
+                                    href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">
 
-                                    <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">
+                                    <i class="fa-regular fa-trash-can"></i>
 
-                                       <i class="fa-regular fa-trash-can"></i>
-
-                                    </a>
-
-                                 </button>
+                                 </a>
 
                               </td>
                            </tr>
