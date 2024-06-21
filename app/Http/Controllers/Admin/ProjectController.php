@@ -78,11 +78,10 @@ class ProjectController extends Controller
         $projectData = $request->all();
 
         // dd($projectData);
-
-        $newProject = new Project();
-        $newProject->fill($projectData);
-        $newProject->slug = Str::slug($newProject->name, '_');
-        $newProject->save();
+        
+        $project->update($projectData);
+        $project->slug = Str::slug($project->name, '_');
+        $project->save();
 
         return redirect()->route('admin.projects.index', ['project' => $project->slug]);
     }
