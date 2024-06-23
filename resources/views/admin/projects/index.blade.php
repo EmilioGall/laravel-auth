@@ -53,27 +53,34 @@
                         @foreach ($projectsArray as $project)
                            <tr>
                               <th scope="row">
-                                 <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">{{ $project['slug'] }}</a>
+                                 <a
+                                    href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">{{ $project['slug'] }}</a>
                               </th>
                               <td>{{ $project['name'] }}</td>
                               <td>{{ substr($project['description'], 0, 20) }}...</td>
-                              <td>
+                              <td class="d-flex gap-2">
 
                                  {{-- Modify Button --}}
                                  <a type="button" class="btn btn-outline-primary"
-                                    href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">
+                                    href="{{ route('admin.projects.edit', ['project' => $project['slug']]) }}">
 
                                     <i class="fa-regular fa-pen-to-square"></i>
 
                                  </a>
 
                                  {{-- Delete Button --}}
-                                 <a type="button" class="btn btn-outline-danger"
-                                    href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">
+                                 <form action="{{ route('admin.projects.destroy', ['project' => $project['slug']]) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <button type="submit" class="btn btn-outline-danger">
 
-                                    <i class="fa-regular fa-trash-can"></i>
+                                       <i class="fa-regular fa-trash-can"></i>
 
-                                 </a>
+                                    </button>
+
+                                 </form>
 
                               </td>
                            </tr>

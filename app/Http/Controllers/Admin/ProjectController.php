@@ -78,9 +78,9 @@ class ProjectController extends Controller
         $projectData = $request->all();
 
         // dd($projectData);
-        
+
         $project->update($projectData);
-        $project->slug = Str::slug($project->name, '_');
+        $project['slug'] = Str::slug($project['name'], '_');
         $project->save();
 
         return redirect()->route('admin.projects.index', ['project' => $project->slug]);
@@ -89,8 +89,12 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
+        
     }
 }
