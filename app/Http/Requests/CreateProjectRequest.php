@@ -23,7 +23,7 @@ class CreateProjectRequest extends FormRequest
     {
         return [
 
-            'name' => ['required', 'min:3'],
+            'title' => ['required', 'min:3'],
             'description' => ['min:20']
 
         ];
@@ -38,8 +38,8 @@ class CreateProjectRequest extends FormRequest
     {
         return [
 
-            'name.required' => 'The title can not be empty! Please insert a valid title.',
-            'name.min:3' => 'The title can not be less than 3 digits! Please insert a valid title.',
+            'title.required' => 'The title can not be empty! Please insert a valid title.',
+            'title.min:3' => 'The title can not be less than 3 digits! Please insert a valid title.',
             'description.min:20' => 'The description can not be less than 20 digits! Please insert a valid description.',
 
         ];

@@ -38,13 +38,13 @@ class ProjectController extends Controller
     public function store(CreateProjectRequest $request)
     {
 
-        $projectData = $request->all();
+        $projectsDataArray = $request->all();
 
-        // dd($projectData);
+        // dd($projectsDataArray);
 
         $newProject = new Project();
-        $newProject->fill($projectData);
-        $newProject->slug = Str::slug($newProject->name, '_');
+        $newProject->fill($projectsDataArray);
+        $newProject->slug = Str::slug($newProject->title, '_');
         $newProject->save();
 
         return redirect()->route('admin.projects.index');
@@ -75,12 +75,12 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
 
-        $projectData = $request->all();
+        $projectsDataArray = $request->all();
 
-        // dd($projectData);
+        // dd($projectsDataArray);
 
-        $project->update($projectData);
-        $project['slug'] = Str::slug($project['name'], '_');
+        $project->update($projectsDataArray);
+        $project['slug'] = Str::slug($project['title'], '_');
         $project->save();
 
         return redirect()->route('admin.projects.index', ['project' => $project->slug]);
@@ -95,6 +95,6 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect()->route('admin.projects.index');
-        
+
     }
 }

@@ -49,7 +49,7 @@
 
                      <div class="d-flex flex-column justify-content-between h-100 p-5 pb-3 text-white text-shadow-1">
 
-                        <h3 class="mb-4 display-6 lh-1 fw-bold">{{ $project->name }}</h3>
+                        <h3 class="mb-4 display-6 lh-1 fw-bold">{{ $project->title }}</h3>
 
                         <ul class="d-flex flex-column justify-content-end list-unstyled mb-0">
 

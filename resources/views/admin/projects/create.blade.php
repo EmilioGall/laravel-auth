@@ -42,20 +42,20 @@
 
                      <div class="row g-3">
 
-                        {{-- Name Input --}}
+                        {{-- Title Input --}}
                         <div class="col-12">
 
-                           <label for="name" class="form-label fw-bold">Project Name</label>
+                           <label for="title" class="form-label fw-bold">Project Title</label>
                            <input type="text"
                               class="form-control
-                              @error('name')
+                              @error('title')
                               is-invalid
                               @enderror"
-                              id="name"
-                              name="name"
-                              value="{{ old('name') }}">
+                              id="title"
+                              name="title"
+                              value="{{ old('title') }}">
 
-                           @error('name')
+                           @error('title')
                               <div class="alert alert-danger mt-1">
                                  {{ $message }}
                               </div>

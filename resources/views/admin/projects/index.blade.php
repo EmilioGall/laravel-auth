@@ -41,7 +41,7 @@
 
                         <tr>
                            <th scope="col">#</th>
-                           <th scope="col">Name</th>
+                           <th scope="col">Title</th>
                            <th scope="col">Description</th>
                            <th scope="col">Actions</th>
                         </tr>
@@ -56,7 +56,7 @@
                                  <a
                                     href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">{{ $project['slug'] }}</a>
                               </th>
-                              <td>{{ $project['name'] }}</td>
+                              <td>{{ $project['title'] }}</td>
                               <td>{{ substr($project['description'], 0, 20) }}...</td>
                               <td class="d-flex gap-2">
 
@@ -73,7 +73,7 @@
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    
+
                                     <button type="submit" class="btn btn-outline-danger">
 
                                        <i class="fa-regular fa-trash-can"></i>

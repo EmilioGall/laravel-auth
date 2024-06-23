@@ -17,7 +17,7 @@
 
                      <h1 class="fw-1 fs-1 text-primary">Modify Project:</h1>
 
-                     <h2>"{{ $project->name }}"</h2>
+                     <h2>"{{ $project['title'] }}"</h2>
 
                   </div>
 
@@ -33,32 +33,33 @@
                      </a>
 
                   </div>
-                  
+
                </div>
 
                {{-- Form Section --}}
                <section class="card-body">
 
-                  <form class="border rounded p-3 my-4" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
+                  <form class="border rounded p-3 my-4"
+                     action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
                      @csrf
                      @method('PUT')
 
                      <div class="row g-3">
 
-                        {{-- Name Input --}}
+                        {{-- Title Input --}}
                         <div class="col-12">
 
-                           <label for="name" class="form-label fw-bold">Project Name</label>
+                           <label for="title" class="form-label fw-bold">Project Title</label>
                            <input type="text"
                               class="form-control
-                              @error('name')
+                              @error('title')
                               is-invalid
                               @enderror"
-                              id="name"
-                              name="name"
-                              value="{{ old('name'), $project->name }}">
+                              id="title"
+                              name="title"
+                              value="{{ old('title', $project['title']) }}">
 
-                           @error('name')
+                           @error('title')
                               <div class="alert alert-danger mt-1">
                                  {{ $message }}
                               </div>

@@ -18,9 +18,9 @@ class ProjectsTableSeeder extends Seeder
             
             $newProject = new Project();
     
-            $newProject->name = $faker->sentence(2);
+            $newProject->title = $faker->sentence(2);
             $newProject->description = $faker->text(500);
-            $newProject->slug = Str::slug($newProject->name, '_');
+            $newProject->slug = Str::slug($newProject->title, '_');
     
             $newProject->save();
 
